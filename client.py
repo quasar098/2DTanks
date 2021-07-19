@@ -232,8 +232,7 @@ while running:
             player_p.draw(screen, other_data[player_]['skin'], (player_p.x-x+halfw, player_p.y-y+halfh), font)
             if other_data[player_]['packets']:
                 if other_data[player_]['packets'][0].__contains__('playerhit'):
-                    if other_data[player_]['packets'][0]['playerhit'][0][0] == str(self_name) or \
-                            other_data[player_]['packets'][0]['playerhit'][0][0] == self_name:
+                    if other_data[player_]['packets'][0]['playerhit'][0] == str(self_name):
                         # self_player has been shot
                         packet = other_data[player_]['packets'][0]['playerhit']
                         lasthit = player_
@@ -249,8 +248,6 @@ while running:
                 if 0 < px[0] < width:
                     if 0 < px[1] < height:
                         pygame.draw.rect(screen, (250, 58, 70), (px[0]+halfw+x*-1-5, px[1]+halfh+y*-1-5, 10, 10))
-
-        print(packets)
 
         # bullet loop
         for i in self_player.prog:

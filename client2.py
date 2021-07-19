@@ -232,8 +232,7 @@ while running:
             player_p.draw(screen, other_data[player_]['skin'], (player_p.x-x+halfw, player_p.y-y+halfh), font)
             if other_data[player_]['packets']:
                 if other_data[player_]['packets'][0].__contains__('playerhit'):
-                    if other_data[player_]['packets'][0]['playerhit'][0][0] == str(self_name) or \
-                            other_data[player_]['packets'][0]['playerhit'][0][0] == self_name:
+                    if other_data[player_]['packets'][0]['playerhit'][0] == str(self_name):
                         # self_player has been shot
                         packet = other_data[player_]['packets'][0]['playerhit']
                         lasthit = player_
@@ -269,7 +268,7 @@ while running:
                 hitbox = pygame.rect.Rect(player_.x-25, player_.y-25, 50, 50)
                 if hitbox.collidepoint(i[0], i[1]):
                     doremove = True
-                    packets.append({'playerhit': [player_.name, i[2], (i[0], i[1]), 2]})
+                    packets.append({'playerhit': [str(player_.name), i[2], (i[0], i[1]), 2]})
                     # convey bullet momemtum and x y
 
                     # todo: add different weapons, dodging, abilities, loot crates, powerups, etc

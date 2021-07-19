@@ -116,5 +116,4 @@ class Particle:
 # bug logger:
 # packet conversations
 # name unavaiblile softlock
-# antikb
 #
