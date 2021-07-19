@@ -60,6 +60,7 @@ def client(address, num, _conn):
             if all_data.__contains__(data['name']):
                 all_data.pop(data['name'])
             break
+    conn.close()
 
 
 start_new_thread(cmdprompt, ())

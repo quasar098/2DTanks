@@ -93,8 +93,12 @@ def connect_thread():
         online = True
         screen_stage = 1
         add_info_text('Connection Succesful', font, fps)
-    except WindowsError:
+    except WindowsError as errno:
         online = False
+        if errno.errno == 10061:
+            add_info_text('(Server Offline)', font, fps)
+        else:
+            add_info_text('Try restarting your game', font, fps)
         add_info_text('Connection Failed', font, fps)
     finally:
         connecting = False
