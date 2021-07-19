@@ -250,7 +250,7 @@ while running:
                     if 0 < px[1] < height:
                         pygame.draw.rect(screen, (250, 58, 70), (px[0]+halfw+x*-1-5, px[1]+halfh+y*-1-5, 10, 10))
 
-
+        print(packets)
 
         # bullet loop
         for i in self_player.prog:
