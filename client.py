@@ -128,7 +128,7 @@ def packet_thread():
                 keep_pressing_send = False
             else:
                 other_data = raw_data
-                world_data = [d for d in raw_data['world data'] if type(d) == list]
+                world_data = [d for d in raw_data['world data'] if d[len(d)-1] != 'notworlddata']
                 incomingpackets = [d for d in raw_data['world data'] if d not in world_data]
             if prold != other_data:
                 prold = other_data
@@ -220,7 +220,12 @@ while running:
         if playerlist.__contains__('world data'):
             playerlist.remove('world data')
 
-        other_players.clear()
+        for cmd in incomingpackets:  # marauder recieveing end
+            if cmd[0] == 'removehitbox':
+                if other_players.__contains__(cmd[1]):  # remove corpses
+                    other_players.pop(cmd[1])
+            elif cmd[0] == 'say':
+                add_info_text(cmd[1], font, fps, noise='key')
 
         for player_ in other_data:
             if not other_players.__contains__(player_):

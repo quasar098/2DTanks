@@ -117,3 +117,9 @@ class Particle:
 # packet conversations
 # name unavaiblile softlock
 #
+
+# dev tools:
+# for server -> client packets, put notworlddata as a tag (at the very very end)
+# also, 2nd last tag would be the received players
+#
+#
